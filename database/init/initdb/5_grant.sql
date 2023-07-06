@@ -1,0 +1,12 @@
+/** grant */
+-- dvl_sys
+GRANT CONNECT ON DATABASE dvldb TO dvl_sys;
+GRANT USAGE ON SCHEMA dvl TO dvl_sys;
+GRANT ALL ON ALL TABLES IN SCHEMA dvl TO dvl_sys;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA dvl TO dvl_sys;
+
+-- dvl_ope
+GRANT CONNECT ON DATABASE dvldb TO dvl_ope;
+GRANT USAGE ON SCHEMA dvl TO dvl_ope;
+GRANT ALL ON ALL TABLES IN SCHEMA dvl TO dvl_ope;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA dvl TO dvl_ope;

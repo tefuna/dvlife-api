@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://ch.qos.logback/xml/ns/logback"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback https://raw.githubusercontent.com/enricopulatzo/logback-XSD/master/src/main/xsd/logback.xsd">
+
+  <property name="ROOT_LEVEL" value="DEBUG" />
+  <property name="logback.log.dir" value="${LOGBACK_LOG_DIR:-./logs}" />
+  <property name="logback.hostname" value="${LOGBACK_HOSTNAME:-localhost}" />
+  <property name="logback.appname" value="dapi" />
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{rid} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  <!--
+  <appender name="APP_TRACE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${logback.log.dir}/${logback.appname}_trace.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${logback.log.dir}/${logback.appname}_trace.log.%d{yyyy-MM-dd}</fileNamePattern>
+      <maxHistory>7</maxHistory>
+    </rollingPolicy>
+
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-10(${logback.hostname}) ${logback.appname} %X{rid} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="jp" level="INFO">
+    <appender-ref ref="APP_TRACE" />
+  </logger>
+-->
+
+  <root level="DEBUG">
+    <appender-ref ref="STDOUT" />
+  </root>
+
+</configuration>

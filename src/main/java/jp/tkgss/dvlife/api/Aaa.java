@@ -18,6 +18,9 @@ public class Aaa {
     @Getter()
     private String test;
 
+    @Getter()
+    private String test2;
+
     /**
      * aaa.
      *
@@ -25,7 +28,7 @@ public class Aaa {
      * @return aa
      */
     public String hello(final String aaa) {
-        System.out.println();
+        System.out.println(aaa + "aaaaaaaaaaaaaaaaa");
         return aaa;
     }
 }

@@ -1,0 +1,142 @@
+openapi: 3.0.3
+info:
+  title: dvlife-api
+  version: "1.0.0"
+  description: dvlife service apis.
+  contact:
+    name: tefuna
+    url: https://www.google.co.jp/
+    email: xxxxxx@gmail.com
+servers:
+  - url: http://localhost:4010
+    description: mock server.
+  - url: http://localhost:8080
+    description: local development.
+tags:
+  - name: stock
+    description: xxxxxxxx.
+  - name: exchange-rate
+    description: xxxxxxxx.
+  - name: dividend-income
+    description: xxxxxxxx.
+paths:
+  /exchange-rates:
+    get:
+      summary: 為替レート取得
+      operationId: get_exchange_rates
+      description: 登録済みの為替レートを取得する。
+      tags:
+        - exchange-rate
+      parameters:
+        - $ref: "#/components/parameters/baseDateFrom"
+        - $ref: "#/components/parameters/baseDateTo"
+      responses:
+        "200":
+          description: |
+            為替レートを返却します。
+            最大100件、`base date` が新しいものから返却します。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ExchangeRate"
+
+    post:
+      summary: 為替レート登録
+      operationId: create_exchange_rates
+      description: 為替レートを登録する。
+      tags:
+        - exchange-rate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/ExchangeRate"
+                - required:
+                    - base_date
+                    - currency
+                    - rate_origin
+                    - rate
+      responses:
+        "201":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExchangeRate"
+        "400":
+          description: バリデーションエラー
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  parameters:
+    baseDateFrom:
+      name: from
+      in: query
+      description: base date from.
+      required: false
+      schema:
+        type: string
+    baseDateTo:
+      name: to
+      in: query
+      description: base date to.
+      required: false
+      schema:
+        type: string
+
+  schemas:
+    ExchangeRate:
+      title: ExchangeRate
+      description: 為替レートオブジェクト
+      type: object
+      properties:
+        base_date:
+          description: 基準日
+          type: string
+          format: date
+        currency:
+          description: 通貨
+          type: string
+          example: JPY
+        rate_origin:
+          description: レート区分
+          type: string
+          enum: [REP, RBS, GEN]
+        rate:
+          description: レート
+          type: number
+          format: double
+          example: 123.45
+
+    ErrorResponse:
+      title: ErrorResponse
+      description: エラーレスポンス。 RFC7807
+      type: object
+      required:
+        - title
+        - detail
+        - status
+      properties:
+        title:
+          description: タイトル
+          type: string
+        detail:
+          description: 説明
+          type: string
+        status:
+          description: HTTPステータス
+          type: integer
+        type:
+          description: 原因の詳細URL
+          type: string
+        instance:
+          description: エラー発生のエンドポイント
+          type: string
+        invalid-params:
+          description: エラー付加情報
+          type: object

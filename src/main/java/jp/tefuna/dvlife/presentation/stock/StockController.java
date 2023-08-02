@@ -1,18 +1,17 @@
-package jp.tkgss.dvlife.api.controller;
+package jp.tefuna.dvlife.presentation.stock;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * aaa.
+ * StockController.
  *
  * @author tefuna
  */
 @RestController
-@Slf4j
-// @RequestMapping(valu.e = "/", method = RequestMethod.GET)
-public class HelloController {
+public class StockController {
+
+    private final 
 
     public String aaa;
 

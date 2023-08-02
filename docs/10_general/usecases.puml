@@ -1,0 +1,46 @@
+@startuml dvlifeユースケース
+title dvlifeユースケース
+!include puml_config/config.puml
+
+actor 利用者
+actor 管理者
+
+' package 認証 {
+'     usecase ログインする
+'     usecase ログアウトする
+' }
+' 利用者 -- ログインする
+' 利用者 -- ログアウトする
+
+' package 配当管理 {
+'     usecase 配当実績一覧を参照する
+'     usecase 配当実績を登録する
+'     usecase 配当実績を削除する
+' }
+' 利用者 -- 配当実績一覧を参照する
+' 利用者 -- 配当実績を登録する
+' 利用者 -- 配当実績を修正する
+
+
+package 銘柄管理 {
+    usecase 銘柄を参照する
+    usecase 銘柄を登録する
+    usecase 銘柄を修正する
+    usecase 銘柄を無効化する
+}
+管理者 -- 銘柄を参照する
+管理者 -- 銘柄を登録する
+管理者 -- 銘柄を修正する
+管理者 -- 銘柄を無効化する
+
+' package 会員管理 {
+    '     usecase 会員登録する
+    '     usecase 会員変更する
+    '     usecase 退会する
+    '
+' }
+' 利用者 -- 会員登録する
+' 利用者 -- 会員変更する
+' 利用者 -- 退会する
+
+@enduml

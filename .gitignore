@@ -3,7 +3,7 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-logs/
+**/*.log
 
 ### STS ###
 .apt_generated
@@ -16,3 +16,6 @@ logs/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
+
+# node
+node_modules

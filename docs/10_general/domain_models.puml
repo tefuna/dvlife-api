@@ -1,0 +1,62 @@
+@startuml ドメインモデル
+!include puml_config/config.puml
+title _PROJECT_CODE_ ドメインモデル
+
+package 銘柄 {
+    class stock as "銘柄(R)"  {
+        銘柄ID
+        銘柄名
+        銘柄ステータス
+        国
+        市場区分
+    }
+    class stock_history as "銘柄履歴(E)"  {
+        銘柄履歴ID
+        銘柄ID
+        銘柄名
+        銘柄ステータス
+        国
+        市場区分
+        更新日時
+    }
+    class div_payout_unit as "支払配当単位(R)" {
+        支払配当単位ID
+        銘柄ID
+        配当権利確定日
+        配当単価
+    }
+}
+
+package 配当 {
+    class div_result as "配当実績(E)" {
+        配当実績ID
+        銘柄ID
+        支払配当単位ID
+        アカウントID
+        受取日
+        受取金額
+        株式数
+        配当金額
+        配当金額（外貨）
+        所得税額
+        住民税額
+    }
+}
+
+' package アカウント {
+'     class account as "アカウント(R)" {
+'         アカウントID
+'         アカウント名
+'         表示名
+'         メールアドレス
+'     }
+' }
+
+stock - stock_history
+stock -- div_payout_unit
+div_result - account
+div_result -- stock
+div_result -- div_payout_unit
+
+
+@enduml

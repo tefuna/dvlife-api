@@ -1,5 +1,6 @@
-package jp.tkgss.dvlife.api;
+package jp.tefuna.dvlife;
 
+import jp.tefuna.dvlife.usecase.Aaa;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,8 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication
 @Slf4j
-// @ComponentScan("jp.tkgss.dvlife.api.controller")
-public class DvlifeApiApplication {
+public class Application {
 
     @RequestMapping("/aa")
     public String hello(final String hello) {
@@ -24,10 +24,10 @@ public class DvlifeApiApplication {
 
     public static void main(String[] args) {
         log.debug("★★★★★★debug logs");
-        DvlifeApiApplication main = new DvlifeApiApplication();
+        Application main = new Application();
         main.name();
 
-        SpringApplication.run(DvlifeApiApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
     /**

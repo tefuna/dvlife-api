@@ -18,13 +18,15 @@
         "streetsidesoftware.code-spell-checker",
         "christian-kohler.path-intellisense",
         "shengchen.vscode-checkstyle",
-        "DotJoshJohnson.xml"
+        "DotJoshJohnson.xml",
+        "42Crunch.vscode-openapi",
+        "adpyke.vscode-sql-formatter"
       ],
       "settings": {
         "java.compile.nullAnalysis.mode": "automatic",
         "java.configuration.updateBuildConfiguration": "automatic",
-        "java.format.settings.url": "/workspaces/${localWorkspaceFolderBasename}/ext/config/tkgss-formatter.xml",
-        "java.checkstyle.configuration": "/workspaces/${localWorkspaceFolderBasename}/ext/config/tkgss-checkstyle.xml",
+        "java.format.settings.url": "/workspaces/${localWorkspaceFolderBasename}/ext/config/tefuna-formatter.xml",
+        "java.checkstyle.configuration": "/workspaces/${localWorkspaceFolderBasename}/ext/config/tefuna-checkstyle.xml",
         "java.checkstyle.version": "10.12.0",
         "java.checkstyle.properties": {},
         "java.completion.importOrder": [
@@ -35,11 +37,11 @@
         ]
       }
     }
-  }
+  },
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {}
   // Use 'postCreateCommand' to run commands after the container is created.
-  // "postCreateCommand": "java -version",
+  "postCreateCommand": "/bin/sh .devcontainer/shell/postCreate.sh"
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
   // "remoteUser": "root"
 }

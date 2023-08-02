@@ -1,0 +1,12 @@
+{
+  "name": "dvlife-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/tefuna/dvlife-api.git",
+  "author": "tefuna <tefuna@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@redocly/cli": "^1.0.0",
+    "redoc-cli": "^0.13.21"
+  }
+}

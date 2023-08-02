@@ -11,7 +11,7 @@
             "type": "java",
             "name": "DvlifeApiApplication",
             "request": "launch",
-            "mainClass": "jp.tkgss.dvlife.api.DvlifeApiApplication",
+            "mainClass": "jp.tefuna.dvlife.api.DvlifeApiApplication",
             "projectName": "dvlife-api"
         }
     ]

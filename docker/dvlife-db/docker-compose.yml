@@ -9,15 +9,14 @@ services:
     restart: unless-stopped
     volumes:
       - dvlife-db:/var/lib/postgresql/data
-      - ../database/init:/docker-entrypoint-initdb.d
+      - ../../database/init:/docker-entrypoint-initdb.d
     environment:
-      # NOTE: POSTGRES_DB/USER/PASSWORD should match values in app container
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     ports:
-      - "5433:5433"
-    command: -p 5433
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    command: -p ${POSTGRES_PORT}
 
 volumes:
   dvlife-db:

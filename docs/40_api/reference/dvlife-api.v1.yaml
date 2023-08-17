@@ -137,6 +137,6 @@ components:
         instance:
           description: エラー発生のエンドポイント
           type: string
-        invalid-params:
+        additions:
           description: エラー付加情報
           type: object

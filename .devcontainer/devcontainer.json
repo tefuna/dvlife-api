@@ -27,6 +27,7 @@
         "java.configuration.updateBuildConfiguration": "automatic",
         "java.format.settings.url": "/workspaces/${localWorkspaceFolderBasename}/ext/config/tefuna-formatter.xml",
         "java.checkstyle.configuration": "/workspaces/${localWorkspaceFolderBasename}/ext/config/tefuna-checkstyle.xml",
+        "java.inlayHints.parameterNames.enabled": "none",
         "java.checkstyle.version": "10.12.0",
         "java.checkstyle.properties": {},
         "java.completion.importOrder": [

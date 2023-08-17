@@ -1,5 +1,6 @@
 package jp.tefuna.dvlife.presentation.stock;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,9 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author tefuna
  */
 @RestController
+@Slf4j
 public class StockController {
-
-    private final 
 
     public String aaa;
 

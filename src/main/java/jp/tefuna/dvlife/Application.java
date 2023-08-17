@@ -1,6 +1,5 @@
 package jp.tefuna.dvlife;
 
-import jp.tefuna.dvlife.usecase.Aaa;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -37,9 +36,9 @@ public class Application {
         System.out.println("aaa");
 
         String a = "testetstse";
-        Aaa aaa = Aaa.builder().test(a).build();
-        System.out.println(aaa.getTest() + "              aaaaaaaaaaaaaaaaaaaaaaaaa");
-        aaa.hello("abbbbbbbbbbbbbbbb");
+        // Aaa aaa = Aaa.builder().test(a).build();
+        // System.out.println(aaa.getTest() + "              aaaaaaaaaaaaaaaaaaaaaaaaa");
+        // aaa.hello("abbbbbbbbbbbbbbbb");
 
     }
 

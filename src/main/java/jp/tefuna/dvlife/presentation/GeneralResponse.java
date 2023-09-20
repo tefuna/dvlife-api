@@ -18,5 +18,6 @@ public final class GeneralResponse<T> {
 
     private List<T> results;
 
+    @JsonUnwrapped
     private ErrorResponse error;
 }

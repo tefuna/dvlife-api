@@ -1,0 +1,26 @@
+# =============================================================================
+# dev
+# =============================================================================
+
+# datasource
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/dvldb
+    username: dvl_sys
+    password: password
+
+    hikari:
+      auto-commit: false
+      minimum-idle: 5
+      maximum-pool-size: 10
+      # connection-timeout: 10
+      # idle-timeout: 60
+
+      connection-test-query: SELECT 1
+
+# mybatis
+mybatis:
+  config-location: classpath:/mybatis-config.xml
+  mapper-locations: classpath:/mapper/*.xml
+  check-config-location: true

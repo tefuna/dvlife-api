@@ -20,10 +20,41 @@ tags:
   - name: dividend-income
     description: xxxxxxxx.
 paths:
+  /exchange-rates/{rateId}:
+    get:
+      summary: 為替レート取得。ID指定
+      operationId: getExchangeRateById
+      description: 登録済みの為替レートを取得する。
+      tags:
+        - exchange-rate
+      parameters:
+        - name: rateId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        "200":
+          description: |
+            `rateId` に合致する為替レートを返却します。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ExchangeRateId"
+                  - $ref: "#/components/schemas/ExchangeRateBody"
+                  - required:
+                      - base_date
+                      - currency
+                      - rate_origin
+                      - rate
+
   /exchange-rates:
     get:
-      summary: 為替レート取得
-      operationId: get_exchange_rates
+      summary: 為替レート取得。期間指定。
+      operationId: getExchangeRateByByBaseDate
       description: 登録済みの為替レートを取得する。
       tags:
         - exchange-rate
@@ -35,15 +66,27 @@ paths:
           description: |
             為替レートを返却します。
             最大100件、`base date` が新しいものから返却します。
+            条件に合致するデータがない場合、空配列を返却します。
           content:
             application/json:
               schema:
-                allOf:
-                  - $ref: "#/components/schemas/ExchangeRate"
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: "#/components/schemas/ExchangeRateId"
+                        - $ref: "#/components/schemas/ExchangeRateBody"
+                        - required:
+                            - base_date
+                            - currency
+                            - rate_origin
+                            - rate
 
     post:
       summary: 為替レート登録
-      operationId: create_exchange_rates
+      operationId: createExchangeRate
       description: 為替レートを登録する。
       tags:
         - exchange-rate
@@ -52,7 +95,7 @@ paths:
           application/json:
             schema:
               allOf:
-                - $ref: "#/components/schemas/ExchangeRate"
+                - $ref: "#/components/schemas/ExchangeRateBody"
                 - required:
                     - base_date
                     - currency
@@ -64,7 +107,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ExchangeRate"
+                allOf:
+                  - $ref: "#/components/schemas/ExchangeRateId"
+                  - $ref: "#/components/schemas/ExchangeRateBody"
         "400":
           description: バリデーションエラー
           content:
@@ -90,53 +135,62 @@ components:
         type: string
 
   schemas:
-    ExchangeRate:
-      title: ExchangeRate
-      description: 為替レートオブジェクト
+    ExchangeRateId:
+      # title: ExchangeRateId
+      type: object
+      properties:
+        rate_id:
+          title: 為替レートID
+          type: string
+      required:
+        - rate_id
+
+    ExchangeRateBody:
+      # title: ExchangeRateBody
       type: object
       properties:
         base_date:
-          description: 基準日
+          title: 基準日
           type: string
           format: date
         currency:
-          description: 通貨
+          title: 通貨
           type: string
-          example: JPY
+          example: USD
         rate_origin:
-          description: レート区分
+          title: レート区分
           type: string
           enum: [REP, RBS, GEN]
         rate:
-          description: レート
+          title: レート
           type: number
           format: double
           example: 123.45
 
     ErrorResponse:
       title: ErrorResponse
-      description: エラーレスポンス。 RFC7807
+      description: RFC9457形式のエラーレスポンス。
       type: object
       required:
+        - status
         - title
         - detail
-        - status
       properties:
-        title:
-          description: タイトル
-          type: string
-        detail:
-          description: 説明
+        type:
+          title: エラーに関する詳細URL
           type: string
         status:
-          description: HTTPステータス
+          title: HTTPステータス
           type: integer
-        type:
-          description: 原因の詳細URL
+        title:
+          title: エラータイトル
+          type: string
+        detail:
+          title: エラー詳細
           type: string
         instance:
-          description: エラー発生のエンドポイント
+          title: エラー発生のエンドポイント
           type: string
         additions:
-          description: エラー付加情報
+          title: エラー付加情報
           type: object

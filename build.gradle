@@ -24,11 +24,30 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter'
+    implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2"
+    implementation "org.postgresql:postgresql"
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+    // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // if you are using mapstruct in test code
+    testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+
+// bootJar {
+//     enabled = true
+//     mainClassName = 'jp.tefuna.divliv.api.Application'
+// }
+
+// jar {
+//     enabled = false
+// }

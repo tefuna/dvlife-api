@@ -1,20 +1,16 @@
 package jp.tefuna.dvlife.usecase.exchangerate.impl;
 
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-import java.util.Currency;
-import java.util.Locale;
-
-import jp.tefuna.dvlife.domain.code.RateOrigin;
 import jp.tefuna.dvlife.domain.model.exchangerate.ExchangeRate;
 import jp.tefuna.dvlife.domain.model.exchangerate.RateId;
 import jp.tefuna.dvlife.domain.repository.ExchangeRateRepository;
 import jp.tefuna.dvlife.usecase.exchangerate.ExchangeRateFindUseCase;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * ExchangeRateFindUseCaseImpl.
+ */
 @Service
 public class ExchangeRateFindUseCaseImpl implements ExchangeRateFindUseCase {
 
@@ -23,7 +19,6 @@ public class ExchangeRateFindUseCaseImpl implements ExchangeRateFindUseCase {
     @Autowired
     public ExchangeRateFindUseCaseImpl(ExchangeRateRepository exchangeRateRepository) {
         this.exchangeRateRepository = exchangeRateRepository;
-
     }
 
     @Override

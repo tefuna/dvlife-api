@@ -1,15 +1,8 @@
 package jp.tefuna.dvlife.presentation.exchangerate;
 
-import java.math.BigDecimal;
-import java.sql.Date;
-import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Currency;
-import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
-import jp.tefuna.dvlife.domain.code.RateOrigin;
 import jp.tefuna.dvlife.domain.model.exchangerate.ExchangeRate;
 import jp.tefuna.dvlife.presentation.BaseController;
 import jp.tefuna.dvlife.presentation.GeneralResponse;
@@ -45,6 +38,7 @@ public class ExchangeRateController extends BaseController {
     public GeneralResponse<ExchangeRateResponse> getExchangeRateById(@PathVariable final String rateId) {
 
         // TODO バリデーション
+        
 
         // UseCase実行
         ExchangeRate out = this.exchangeRateFindUseCase.findByRateId(Integer.parseInt(rateId));

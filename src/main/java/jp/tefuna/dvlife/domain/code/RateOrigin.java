@@ -1,7 +1,5 @@
 package jp.tefuna.dvlife.domain.code;
 
-import java.util.Arrays;
-
 import lombok.Getter;
 
 @Getter

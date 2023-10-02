@@ -4,7 +4,6 @@ import jp.tefuna.dvlife.domain.model.exchangerate.ExchangeRate;
 import jp.tefuna.dvlife.domain.model.exchangerate.RateId;
 import jp.tefuna.dvlife.domain.repository.ExchangeRateRepository;
 import jp.tefuna.dvlife.infrastructure.db.mapper.ExchangeRateMapper;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -13,11 +12,6 @@ import org.springframework.stereotype.Repository;
 public class ExchangeRateRepositoryImpl implements ExchangeRateRepository {
 
     private final ExchangeRateMapper mapper;
-
-    @Override
-    public void findByBaseDateFromTo() {
-
-    }
 
     @Override
     public ExchangeRate findByRateId(RateId rateId) {

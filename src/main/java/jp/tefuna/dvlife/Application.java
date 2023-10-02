@@ -37,7 +37,7 @@ public class Application {
 
         String a = "testetstse";
         // Aaa aaa = Aaa.builder().test(a).build();
-        // System.out.println(aaa.getTest() + "              aaaaaaaaaaaaaaaaaaaaaaaaa");
+        // System.out.println(aaa.getTest() + " aaaaaaaaaaaaaaaaaaaaaaaaa");
         // aaa.hello("abbbbbbbbbbbbbbbb");
 
     }

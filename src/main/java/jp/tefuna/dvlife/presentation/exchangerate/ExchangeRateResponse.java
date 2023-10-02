@@ -1,10 +1,7 @@
 package jp.tefuna.dvlife.presentation.exchangerate;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-import java.util.Currency;
 
-import jp.tefuna.dvlife.domain.code.RateOrigin;
 import lombok.Data;
 
 /**

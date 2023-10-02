@@ -1,6 +1,5 @@
 package jp.tefuna.dvlife.presentation.exchangerate;
 
-public class ExchangeRateConverter {
-
-
+public class ExchangeRateValidator {
+    
 }
